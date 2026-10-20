@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Compass — Find your bearing after 10th &amp; 12th</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16233F;
+    --ink-2:#22335A;
+    --ink-3:#2C4070;
+    --paper:#F7F3E9;
+    --paper-2:#FFFFFF;
+    --marigold:#E8A33D;
+    --marigold-dark:#C17F1F;
+    --teal:#1F7A6C;
+    --maroon:#8B2E3F;
+    --slate:#5B6B85;
+    --slate-light:#8C9AB5;
+    --line:#DCD4BE;
+    --line-dark:rgba(255,255,255,0.14);
+    --radius-s:6px;
+    --radius-m:12px;
+    --radius-l:22px;
+    --shadow-card:0 1px 2px rgba(22,35,63,0.06), 0 8px 24px -12px rgba(22,35,63,0.18);
+    --font-display:'Zilla Slab', Georgia, serif;
+    --font-body:'Karla', -apple-system, sans-serif;
+    --font-mono:'JetBrains Mono', 'Courier New', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    background:var(--paper);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;}
+  button{font-family:inherit;cursor:pointer;}
+  h1,h2,h3,h4{font-family:var(--font-display);margin:0 0 0.4em 0;line-height:1.1;font-weight:600;}
+  p{line-height:1.6;margin:0 0 1em 0;color:var(--slate);}
+  .mono{font-family:var(--font-mono);}
+  :focus-visible{outline:2.5px solid var(--marigold-dark);outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  /* ---------- Layout shells ---------- */
+  .cc-wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  .cc-view{display:none;}
+  .cc-view.is-active{display:block;}
+
+  /* ---------- Header ---------- */
+  header.cc-header{
+    position:sticky;top:0;z-index:40;
+    background:rgba(247,243,233,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .cc-header-inner{
+    max-width:1180px;margin:0 auto;padding:14px 28px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .cc-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:1.25rem;color:var(--ink);text-decoration:none;letter-spacing:0.2px;}
+  .cc-logo svg{width:30px;height:30px;flex:none;}
+  nav.cc-nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap;}
+  .cc-nav-link{
+    font-size:0.86rem;font-weight:600;color:var(--slate);
+    padding:8px 12px;border-radius:100px;text-decoration:none;
+    border:1px solid transparent;
+    transition:background .15s ease, color .15s ease;
+  }
+  .cc-nav-link:hover{background:var(--paper-2);color:var(--ink);}
+  .cc-nav-link.is-current{background:var(--ink);color:var(--paper);}
+  .cc-nav-auth{display:flex;align-items:center;gap:8px;}
+  .cc-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    font-weight:700;font-size:0.88rem;padding:10px 18px;border-radius:100px;
+    border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);
+    text-decoration:none;transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .cc-btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px -6px rgba(22,35,63,0.4);}
+  .cc-btn:active{transform:translateY(0);}
+  .cc-btn.cc-btn-ghost{background:transparent;color:var(--ink);}
+  .cc-btn.cc-btn-marigold{background:var(--marigold);border-color:var(--marigold);color:var(--ink);}
+  .cc-btn.cc-btn-outline{background:transparent;border-color:var(--line);color:var(--ink);}
+  .cc-btn.cc-btn-outline:hover{border-color:var(--ink);}
+  .cc-btn.cc-btn-small{padding:7px 13px;font-size:0.78rem;}
+  .cc-btn[disabled]{opacity:0.45;cursor:not-allowed;transform:none;box-shadow:none;}
+  .cc-btn-icon{background:transparent;border:1.5px solid var(--line);color:var(--ink);width:38px;height:38px;border-radius:100px;padding:0;display:inline-flex;align-items:center;justify-content:center;}
+  .cc-btn-icon.is-active{background:var(--maroon);border-color:var(--maroon);color:#fff;}
+
+  /* ---------- Hero / Home ---------- */
+  .cc-hero{padding:64px 0 40px;position:relative;overflow:hidden;}
+  .cc-hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;}
+  .cc-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);
+    font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);
+    background:rgba(31,122,108,0.1);border:1px solid rgba(31,122,108,0.25);
+    padding:6px 12px;border-radius:100px;margin-bottom:18px;font-weight:600;
+  }
+  .cc-hero h1{font-size:clamp(2.3rem,4.2vw,3.6rem);color:var(--ink);margin-bottom:0.3em;}
+  .cc-hero h1 em{font-style:italic;color:var(--marigold-dark);}
+  .cc-hero p.cc-lede{font-size:1.08rem;max-width:46ch;}
+  .cc-hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;}
+  .cc-hero-stats{display:flex;gap:28px;margin-top:34px;flex-wrap:wrap;}
+  .cc-hero-stat b{display:block;font-family:var(--font-display);font-size:1.6rem;color:var(--ink);}
+  .cc-hero-stat span{font-size:0.78rem;color:var(--slate);}
+
+  /* Compass rose */
+  .cc-compass-holder{display:flex;align-items:center;justify-content:center;}
+  .cc-compass{width:100%;max-width:400px;}
+  .cc-compass-face{fill:var(--paper-2);stroke:var(--line);stroke-width:1.5;}
+  .cc-compass-ring{fill:none;stroke:var(--ink);stroke-width:1;opacity:0.15;}
+  .cc-compass-tick{stroke:var(--slate);stroke-width:1.4;}
+  .cc-compass-label{font-family:var(--font-mono);font-size:9.5px;font-weight:600;fill:var(--ink);}
+  .cc-compass-needle{transform-origin:200px 200px;transition:transform 0.8s cubic-bezier(.34,1.4,.4,1);}
+  .cc-compass-center{fill:var(--ink);}
+  .cc-compass-tag{font-family:var(--font-mono);font-size:11px;fill:var(--slate);text-anchor:middle;}
+
+  .cc-streams-strip{padding:8px 0 56px;}
+  .cc-streams-strip h3{font-size:1rem;color:var(--slate);font-family:var(--font-body);font-weight:700;margin-bottom:14px;}
+  .cc-chip-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .cc-chip{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--paper-2);border:1.5px solid var(--line);border-radius:100px;
+    padding:8px 14px 8px 8px;font-size:0.82rem;font-weight:600;
+    text-decoration:none;color:var(--ink);transition:border-color .15s ease, transform .1s ease;
+  }
+  .cc-chip:hover{transform:translateY(-1px);}
+  .cc-chip .cc-line-badge{width:22px;height:22px;font-size:0.6rem;}
+
+  .cc-line-badge{
+    display:inline-flex;align-items:center;justify-content:center;
+    border-radius:50%;color:#fff;font-family:var(--font-mono);font-weight:700;
+    font-size:0.68rem;letter-spacing:0.02em;flex:none;
+  }
+
+  /* ---------- Generic section chrome ---------- */
+  .cc-section{padding:52px 0;}
+  .cc-section-head{margin-bottom:32px;max-width:60ch;}
+  .cc-section-head .cc-eyebrow{margin-bottom:10px;}
+  .cc-section-head h2{font-size:clamp(1.6rem,2.6vw,2.2rem);}
+  .cc-panel{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius-l);
+    padding:34px;box-shadow:var(--shadow-card);
+  }
+
+  /* ---------- Profile / recommendations form ---------- */
+  .cc-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+  .cc-field{margin-bottom:20px;}
+  .cc-field label{display:block;font-weight:700;font-size:0.86rem;margin-bottom:8px;}
+  .cc-field .cc-hint{font-size:0.76rem;color:var(--slate-light);margin-top:6px;}
+  select.cc-input, input.cc-input{
+    width:100%;padding:11px 14px;border-radius:var(--radius-s);border:1.5px solid var(--line);
+    background:var(--paper);font-family:inherit;font-size:0.92rem;color:var(--ink);
+  }
+  .cc-tag-toggle-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .cc-tag-toggle{
+    border:1.5px solid var(--line);background:var(--paper);border-radius:100px;padding:8px 14px;
+    font-size:0.8rem;font-weight:600;color:var(--slate);
+  }
+  .cc-tag-toggle.is-selected{background:var(--ink);border-color:var(--ink);color:var(--paper);}
+
+  /* ---------- Cards / grid ---------- */
+  .cc-card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px;}
+  .cc-card{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius-m);
+    padding:22px;box-shadow:var(--shadow-card);border-top:4px solid var(--stream-color,var(--ink));
+    display:flex;flex-direction:column;gap:10px;position:relative;
+  }
+  .cc-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+  .cc-card h4{font-size:1.14rem;margin-bottom:2px;}
+  .cc-card .cc-card-stream{font-size:0.72rem;color:var(--slate);font-weight:700;text-transform:uppercase;letter-spacing:0.05em;}
+  .cc-card p.cc-tagline{font-size:0.87rem;margin-bottom:4px;flex-grow:1;}
+  .cc-meta-row{display:flex;justify-content:space-between;font-size:0.78rem;color:var(--slate);border-top:1px dashed var(--line);padding-top:10px;margin-top:4px;}
+  .cc-meta-row b{color:var(--ink);font-family:var(--font-mono);}
+  .cc-card-actions{display:flex;gap:8px;margin-top:6px;}
+  .cc-badge{
+    font-family:var(--font-mono);font-size:0.66rem;font-weight:600;text-transform:uppercase;
+    letter-spacing:0.06em;padding:4px 8px;border-radius:5px;background:var(--paper);border:1px solid var(--line);color:var(--slate);
+  }
+  .cc-badge.cc-badge-emerging{background:rgba(31,122,108,0.12);color:var(--teal);border-color:rgba(31,122,108,0.3);}
+  .cc-badge.cc-badge-government{background:rgba(139,46,63,0.1);color:var(--maroon);border-color:rgba(139,46,63,0.25);}
+  .cc-fav-btn{
+    border:1.5px solid var(--line);background:var(--paper-2);width:34px;height:34px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .cc-fav-btn svg{width:16px;height:16px;stroke:var(--slate);fill:none;}
+  .cc-fav-btn.is-fav svg{fill:var(--maroon);stroke:var(--maroon);}
+
+  .cc-empty{
+    border:1.5px dashed var(--line);border-radius:var(--radius-m);padding:40px 24px;text-align:center;color:var(--slate);
+  }
+  .cc-empty h4{color:var(--ink);}
+
+  /* ---------- Explore / filters ---------- */
+  .cc-explore-layout{display:grid;grid-template-columns:250px 1fr;gap:32px;align-items:start;}
+  .cc-filter-box{position:sticky;top:90px;}
+  .cc-filter-group{margin-bottom:22px;}
+  .cc-filter-group h5{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--slate);margin-bottom:10px;}
+  .cc-filter-option{display:flex;align-items:center;gap:8px;font-size:0.86rem;padding:5px 0;cursor:pointer;}
+  .cc-search-row{display:flex;gap:10px;margin-bottom:20px;}
+  .cc-tabs{display:flex;gap:6px;margin-bottom:20px;border-bottom:1px solid var(--line);}
+  .cc-tab{padding:10px 16px;font-weight:700;font-size:0.86rem;color:var(--slate);border-bottom:2.5px solid transparent;background:none;border-radius:0;}
+  .cc-tab.is-active{color:var(--ink);border-color:var(--marigold-dark);}
+  .cc-result-count{font-size:0.8rem;color:var(--slate);margin-bottom:14px;}
+
+  table.cc-table{width:100%;border-collapse:collapse;font-size:0.86rem;}
+  table.cc-table th{text-align:left;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--slate);border-bottom:1.5px solid var(--line);padding:10px 12px;}
+  table.cc-table td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+  table.cc-table tr:hover td{background:rgba(232,163,61,0.06);}
+
+  /* ---------- Detail view ---------- */
+  .cc-detail-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:30px;flex-wrap:wrap;}
+  .cc-detail-title h2{font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:6px;}
+  .cc-stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin:28px 0;}
+  .cc-stat-box{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-m);padding:16px 18px;}
+  .cc-stat-box span{display:block;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--slate);margin-bottom:6px;}
+  .cc-stat-box b{font-family:var(--font-mono);font-size:1.05rem;color:var(--ink);}
+  .cc-detail-cols{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:10px;}
+  .cc-detail-block h4{font-size:0.98rem;border-bottom:2px solid var(--line);padding-bottom:8px;margin-bottom:12px;}
+  .cc-pill-list{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0;}
+  .cc-pill-list li{background:var(--paper);border:1px solid var(--line);border-radius:100px;padding:6px 12px;font-size:0.8rem;}
+  .cc-list-plain{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}
+  .cc-list-plain li{padding-left:18px;position:relative;font-size:0.9rem;color:var(--ink);}
+  .cc-list-plain li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;background:var(--stream-color,var(--marigold));border-radius:50%;}
+
+  /* Route / roadmap */
+  .cc-route{margin-top:12px;position:relative;padding-left:6px;}
+  .cc-route::before{content:'';position:absolute;left:19px;top:8px;bottom:8px;width:2px;background:var(--line);}
+  .cc-route-stop{display:flex;gap:18px;position:relative;padding-bottom:26px;}
+  .cc-route-stop:last-child{padding-bottom:0;}
+  .cc-route-dot{
+    width:40px;height:40px;border-radius:50%;background:var(--stream-color,var(--ink));color:#fff;
+    display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-weight:700;font-size:0.85rem;
+    flex:none;z-index:1;box-shadow:0 0 0 5px var(--paper-2);
+  }
+  .cc-route-copy .cc-route-stage{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--slate);font-weight:700;margin-bottom:2px;}
+  .cc-route-copy h5{font-family:var(--font-body);font-weight:700;font-size:0.98rem;margin-bottom:4px;color:var(--ink);}
+  .cc-route-copy p{font-size:0.87rem;margin-bottom:0;}
+
+  /* ---------- Compare ---------- */
+  .cc-compare-picker{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;}
+  .cc-compare-slot{
+    border:1.5px dashed var(--line);border-radius:var(--radius-m);padding:14px;flex:1;min-width:200px;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--paper-2);
+  }
+  .cc-compare-slot.is-filled{border-style:solid;}
+
+  /* ---------- Auth ---------- */
+  .cc-auth-shell{max-width:440px;margin:0 auto;}
+  .cc-auth-toggle{display:flex;background:var(--paper);border:1px solid var(--line);border-radius:100px;padding:4px;margin-bottom:26px;}
+  .cc-auth-toggle button{flex:1;padding:9px;border-radius:100px;background:none;border:none;font-weight:700;font-size:0.85rem;color:var(--slate);}
+  .cc-auth-toggle button.is-active{background:var(--ink);color:var(--paper);}
+
+  /* ---------- Resources ---------- */
+  .cc-res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
+  .cc-res-card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius-m);padding:22px;}
+  .cc-res-card span.cc-badge{margin-bottom:10px;display:inline-block;}
+  details.cc-faq{border-bottom:1px solid var(--line);padding:14px 0;}
+  details.cc-faq summary{font-weight:700;cursor:pointer;font-size:0.95rem;list-style:none;display:flex;justify-content:space-between;}
+  details.cc-faq summary::-webkit-details-marker{display:none;}
+  details.cc-faq summary::after{content:'+';font-family:var(--font-mono);font-size:1.2rem;color:var(--slate);}
+  details.cc-faq[open] summary::after{content:'–';}
+  details.cc-faq p{margin-top:10px;}
+
+  /* ---------- Admin ---------- */
+  .cc-admin-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:30px;align-items:start;}
+  .cc-admin-list{max-height:640px;overflow:auto;border:1px solid var(--line);border-radius:var(--radius-m);}
+  .cc-admin-row{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);font-size:0.86rem;gap:10px;}
+  .cc-admin-row:last-child{border-bottom:none;}
+  .cc-admin-row .cc-admin-row-name{font-weight:700;}
+  .cc-admin-row .cc-admin-row-meta{font-size:0.74rem;color:var(--slate);}
+  .cc-note{background:rgba(232,163,61,0.12);border:1px solid rgba(232,163,61,0.4);border-radius:var(--radius-s);padding:12px 16px;font-size:0.82rem;color:var(--marigold-dark);margin-bottom:20px;}
+
+  /* ---------- Toast ---------- */
+  .cc-toast{
+    position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:var(--ink);color:var(--paper);padding:13px 22px;border-radius:100px;font-size:0.86rem;font-weight:600;
+    box-shadow:0 12px 30px -8px rgba(0,0,0,0.4);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:100;
+  }
+  .cc-toast.is-visible{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  /* ---------- Footer ---------- */
+  footer.cc-footer{border-top:1px solid var(--line);padding:40px 0;margin-top:40px;}
+  .cc-footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+  .cc-footer-links{display:flex;gap:18px;flex-wrap:wrap;}
+  .cc-footer-links a{font-size:0.82rem;color:var(--slate);text-decoration:none;font-weight:600;}
+  .cc-footer-links a:hover{color:var(--ink);}
+  .cc-fine{font-size:0.76rem;color:var(--slate-light);}
+
+  @media (max-width:900px){
+    .cc-hero-grid{grid-template-columns:1fr;}
+    .cc-compass-holder{order:-1;max-width:260px;margin:0 auto 20px;}
+    .cc-form-grid{grid-template-columns:1fr;}
+    .cc-explore-layout{grid-template-columns:1fr;}
+    .cc-filter-box{position:static;}
+    .cc-detail-cols{grid-template-columns:1fr;}
+    .cc-admin-grid{grid-template-columns:1fr;}
+    nav.cc-nav{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cc-header">
+  <div class="cc-header-inner">
+    <a href="#" class="cc-logo" data-nav="home">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="#16233F" stroke-width="2"/><path d="M20 8 L24 20 L20 32 L16 20 Z" fill="#E8A33D"/><circle cx="20" cy="20" r="2.4" fill="#16233F"/></svg>
+      Career Compass
+    </a>
+    <nav class="cc-nav" id="ccNav">
+      <a href="#" class="cc-nav-link" data-nav="profile">Find my bearing</a>
+      <a href="#" class="cc-nav-link" data-nav="explore">Explore</a>
+      <a href="#" class="cc-nav-link" data-nav="compare">Compare</a>
+      <a href="#" class="cc-nav-link" data-nav="govt">Govt &amp; emerging</a>
+      <a href="#" class="cc-nav-link" data-nav="resources">Resources</a>
+      <a href="#" class="cc-nav-link" data-nav="favorites">Favourites</a>
+    </nav>
+    <div class="cc-nav-auth" id="ccAuthArea"></div>
+  </div>
+</header>
+
+<!-- ============ HOME ============ -->
+<section class="cc-view" id="view-home">
+  <div class="cc-wrap cc-hero">
+    <div class="cc-hero-grid">
+      <div>
+        <span class="cc-eyebrow">For students after 10th &amp; 12th</span>
+        <h1>Not sure what comes after board exams? <em>Take a bearing.</em></h1>
+        <p class="cc-lede">Career Compass lays out every route from your marksheet to your first job — engineering, medicine, design, government services, law, research and more — with the exams, courses, colleges and salaries laid out plainly, so the choice is yours, not your neighbour's opinion.</p>
+        <div class="cc-hero-actions">
+          <a href="#" class="cc-btn cc-btn-marigold" data-nav="profile">Find my bearing →</a>
+          <a href="#" class="cc-btn cc-btn-outline" data-nav="explore">Browse all careers</a>
+        </div>
+        <div class="cc-hero-stats">
+          <div class="cc-hero-stat"><b id="statCareers">25</b><span>careers mapped</span></div>
+          <div class="cc-hero-stat"><b>12</b><span>streams covered</span></div>
+          <div class="cc-hero-stat"><b>40+</b><span>entrance exams listed</span></div>
+        </div>
+      </div>
+      <div class="cc-compass-holder">
+        <svg class="cc-compass" viewBox="0 0 400 400" id="compassSvg">
+          <circle class="cc-compass-face" cx="200" cy="200" r="182"/>
+          <circle class="cc-compass-ring" cx="200" cy="200" r="150"/>
+          <g id="compassTicks"></g>
+          <g id="compassLabels"></g>
+          <text class="cc-compass-tag" id="compassTag" x="200" y="200" dy="58">choose a stream below</text>
+          <g class="cc-compass-needle" id="compassNeedle">
+            <polygon points="200,70 209,200 200,215 191,200" fill="#8B2E3F"/>
+            <polygon points="200,330 209,200 200,185 191,200" fill="#16233F"/>
+          </g>
+          <circle class="cc-compass-center" cx="200" cy="200" r="9"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="cc-wrap cc-streams-strip">
+    <h3>Twelve routes on the compass — hover to see where they point</h3>
+    <div class="cc-chip-row" id="streamChipRow"></div>
+  </div>
+
+  <div class="cc-wrap cc-section" style="padding-top:0;">
+    <div class="cc-section-head">
+      <span class="cc-eyebrow">Featured</span>
+      <h2>Popular waypoints right now</h2>
+    </div>
+    <div class="cc-card-grid" id="homeFeaturedGrid"></div>
+  </div>
+</section>
+
+<!-- ============ PROFILE / RECOMMEND ============ -->
+<section class="cc-view" id="view-profile">
+  <div class="cc-wrap cc-section">
+    <div class="cc-section-head">
+      <span class="cc-eyebrow">Step 1 of 2</span>
+      <h2>Tell us where you're starting from</h2>
+      <p>Answer honestly, not aspirationally — the compass works best from your real starting point.</p>
+    </div>
+    <div class="cc-panel" style="max-width:760px;">
+      <div class="cc-form-grid">
+        <div class="cc-field">
+          <label for="fQualification">Your qualification</label>
+          <select class="cc-input" id="fQualification">
+            <option value="10th">Passed 10th, deciding my stream</option>
+            <option value="12th">Passed / appearing for 12th</option>
+          </select>
+        </div>
+        <div class="cc-field">
+          <label for="fStream">12th stream (if applicable)</label>
+          <select class="cc-input" id="fStream">
+            <option value="any">Not decided / not applicable</option>
+            <option value="Science-PCM">Science — PCM</option>
+            <option value="Science-PCB">Science — PCB</option>
+            <option value="Commerce">Commerce</option>
+            <option value="Arts">Arts / Humanities</option>
+          </select>
+        </div>
+      </div>
+      <div class="cc-field">
+        <label>What pulls you in? Pick a few interests</label>
+        <div class="cc-tag-toggle-row" id="interestToggleRow"></div>
+        <div class="cc-hint">Pick at least one — recommendations sharpen with every selection.</div>
+      </div>
+      <button class="cc-btn cc-btn-marigold" id="btnGetRecs">Show my recommendations →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECOMMENDATIONS ============ -->
+<section class="cc-view" id="view-recommendations">
+  <div class="cc-wrap cc-section">
+    <div class="cc-section-head">
+      <span class="cc-eyebrow">Step 2 of 2</span>
+      <h2 id="recHeading">Careers that match your bearing</h2>
+      <p>Ranked by how closely they match what you picked. Not a fixed answer — a starting shortlist worth reading into.</p>
+    </div>
+    <div id="recGrid" class="cc-card-grid"></div>
+    <div style="margin-top:28px;">
+      <a href="#" class="cc-nav-link" data-nav="profile" style="border:1px solid var(--line);">← Adjust my answers</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPLORE ============ -->
+<section class="cc-view" id="view-explore">
+  <div class="cc-wrap cc-section">
+    <div class="cc-section-head">
+      <span class="cc-eyebrow">Full map</span>
+      <h2>Explore every career, exam and college</h2>
+    </div>
+    <div class="cc-tabs">
+      <button class="cc-tab is-active" data-etab="careers">Careers</button>
+      <button class="cc-tab" data-etab="exams">Entrance exams</button>
+      <button class="cc-tab" data-etab="colleges">Top colleges</button>
+    </div>
+
+    <div id="etab-careers">
+      <div class="cc-explore-layout">
+        <aside class="cc-filter-box">
+          <div class="cc-search-row" style="margin-bottom:22px;">
+            <input class="cc-input" id="exploreSearch" placeholder="Search careers…">
+          </div>
+          <div class="cc-filter-group">
+            <h5>Stream</h5>
+            <div id="filterStreamList"></div>
+          </div>
+          <div class="cc-filter-group">
+            <h5>Category</h5>
+            <label class="cc-filter-option"><input type="radio" name="fcat" value="all" checked> All careers</label>
+            <label class="cc-filter-option"><input type="radio" name="fcat" value="core"> Core / traditional</label>
+            <label class="cc-filter-option"><input type="radio" name="fcat" value="government"> Government &amp; defence</label>
+            <label class="cc-filter-option"><input type="radio" name="fcat" value="emerging"> Emerging &amp; tech-led</label>
+          </div>
+          <div class="cc-filter-group">
+            <h5>Sort by</h5>
+            <select class="cc-input" id="exploreSort">
+              <option value="name">Name (A–Z)</option>
+              <option value="salaryHigh">Salary — high to low</option>
+              <option value="salaryLow">Salary — low to high</option>
+              <option value="growth">Growth outlook</option>
+            </select>
+          </div>
+          <button class="cc-btn cc-btn-outline cc-btn-small" id="btnClearFilters">Clear filters</button>
+        </aside>
+        <div>
+          <div class="cc-result-count" id="exploreCount"></div>
+          <div class="cc-card-grid" id="exploreGrid"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="etab-exams" style="display:none;">
+      <table class="cc-table">
+        <thead><tr><th>Entrance exam</th><th>Opens the door to</th></tr></thead>
+        <tbody id="examTableBody"></tbody>
+      </table>
+    </div>
+
+    <div id="etab-colleges" style="display:none;">
+      <table class="cc-table">
+        <thead><tr><th>College / institute</th><th>Known for</th></tr></thead>
+        <tbody id="collegeTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DETAIL ============ -->
+<section class="cc-view" id="view-detail">
+  <div class="cc-wrap cc-section" id="detailContent"></div>
+</section>
+
+<!-- ============ COMPARE ============ -->
+<section class="cc-view" id="view-compare">
+  <div class="cc-wrap cc-section">
+    <div class="cc-section-head">
+      <span class="cc-eyebrow">Side by side</span>
+      <h2>Compare up to three careers</h2>
+      <p>Pick any three routes and see them laid flat — same rows, same units, easier to weigh.</p>
+    </div>
+    <div class="cc-compare-picker" id="comparePicker"></div>
+    <div id="compareTableWrap"></div>
+  </div>
+</section>
+
+<!-- ============ GOVT & EMERGING ============ -->
+<section class="cc-view" id="view-govt">
+  <div class="cc-wrap cc-section">
+    <div class="cc-section-head">
+      <span class="cc-eyebrow">Two growing directions</span>
+      <h2>Government services, defence &amp; emerging tech careers</h2>
+      <p>Stable public-service routes on one side, fast-moving fields like AI, data and cybersecurity on the other. Both are worth a serious look.</p>
+    </div>
+    <h3 style="font-size:1rem;color:var(--maroon);margin-bottom:14px;">Government &amp; defence</h3>
+    <div class="cc-card-grid" id="govtGrid" style="margin-bottom:44px;"></div>
+    <h3 style="font-size:1rem;color:var(--teal);margin-bottom:14px;">Emerging &amp; tech-led</h3>
+    <div class="cc-card-grid" id="emergingGrid"></div>
+  </div>
+</section>
+
+<!-- ============ RESOURCES ============ -->
+<section class="cc-view" id="view-resources">
+  <div class="cc-wrap cc-section">
+    <div class="cc-section-head">
+      <span class="cc-eyebrow">Read before you decide</span>
+      <h2>Guides, scholarships &amp; frequently asked questions</h2>
+    </div>
+    <div class="cc-res-grid" style="margin-bottom:44px;">
+      <div class="cc-res-card"><span class="cc-badge">Guide</span><h4>Board marks aren't your ceiling</h4><p>How admission cut-offs actually work, and why a modest percentage still leaves plenty of strong options open.</p></div>
+      <div class="cc-res-card"><span class="cc-badge">Guide</span><h4>Reading a syllabus before you commit</h4><p>What to check in a course structure before you fall for the college brochure.</p></div>
+      <div class="cc-res-card"><span class="cc-badge">Guide</span><h4>Talking to your parents about an unusual choice</h4><p>A framework for the conversation when your interest doesn't match the "safe three" careers.</p></div>
+      <div class="cc-res-card"><span class="cc-badge">Scholarship</span><h4>National Scholarship Portal (NSP)</h4><p>Central government scheme covering pre- and post-matric scholarships across most streams.</p></div>
+      <div class="cc-res-card"><span class="cc-badge">Scholarship</span><h4>State merit-cum-means schemes</h4><p>Most state education departments run their own merit and means-based aid — check your state portal.</p></div>
+      <div class="cc-res-card"><span class="cc-badge">Scholarship</span><h4>Private &amp; institute scholarships</h4><p>Many colleges and foundations run entrance-linked scholarships — worth asking about at admission time.</p></div>
+    </div>
+    <h3 style="font-size:1.1rem;margin-bottom:6px;">Frequently asked questions</h3>
+    <div id="faqList"></div>
+  </div>
+</section>
+
+<!-- ============ AUTH ============ -->
+<section class="cc-view" id="view-auth">
+  <div class="cc-wrap cc-section">
+    <div class="cc-auth-shell cc-panel">
+      <div class="cc-auth-toggle">
+        <button id="authTabLogin" class="is-active">Log in</button>
+        <button id="authTabRegister">Register</button>
+      </div>
+      <div id="authFormLogin">
+        <div class="cc-field"><label for="loginEmail">Email</label><input class="cc-input" id="loginEmail" type="email" placeholder="you@example.com"></div>
+        <div class="cc-field"><label for="loginPassword">Password</label><input class="cc-input" id="loginPassword" type="password" placeholder="••••••••"></div>
+        <button class="cc-btn cc-btn-marigold" style="width:100%;" id="btnDoLogin">Log in</button>
+        <p style="font-size:0.78rem;margin-top:14px;">New here? <a href="#" data-authswitch="register" style="color:var(--marigold-dark);font-weight:700;">Create an account</a> to save favourites.</p>
+      </div>
+      <div id="authFormRegister" style="display:none;">
+        <div class="cc-field"><label for="regName">Full name</label><input class="cc-input" id="regName" placeholder="Your name"></div>
+        <div class="cc-field"><label for="regEmail">Email</label><input class="cc-input" id="regEmail" type="email" placeholder="you@example.com"></div>
+        <div class="cc-field"><label for="regPassword">Password</label><input class="cc-input" id="regPassword" type="password" placeholder="Create a password"></div>
+        <button class="cc-btn cc-btn-marigold" style="width:100%;" id="btnDoRegister">Create account</button>
+        <p style="font-size:0.78rem;margin-top:14px;">Already registered? <a href="#" data-authswitch="login" style="color:var(--marigold-dark);font-weight:700;">Log in</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAVORITES ============ -->
+<section class="cc-view" id="view-favorites">
+  <div class="cc-wrap cc-section">
+    <div class="cc-section-head">
+      <span class="cc-eyebrow">Saved</span>
+      <h2>Your favourite careers</h2>
+    </div>
+    <div id="favoritesArea"></div>
+  </div>
+</section>
+
+<!-- ============ ADMIN ============ -->
+<section class="cc-view" id="view-admin">
+  <div class="cc-wrap cc-section">
+    <div class="cc-section-head">
+      <span class="cc-eyebrow">Admin panel</span>
+      <h2>Manage careers on the platform</h2>
+    </div>
+    <div class="cc-note">Changes you make here apply to this browsing session only — reloading the page resets the data to the built-in set.</div>
+    <div class="cc-admin-grid">
+      <div>
+        <h4 style="font-size:0.95rem;margin-bottom:12px;">All careers (<span id="adminCount">0</span>)</h4>
+        <div class="cc-admin-list" id="adminList"></div>
+      </div>
+      <div class="cc-panel">
+        <h4 style="font-size:0.95rem;margin-bottom:16px;" id="adminFormTitle">Add a new career</h4>
+        <div class="cc-field"><label>Name</label><input class="cc-input" id="afName"></div>
+        <div class="cc-form-grid">
+          <div class="cc-field"><label>Stream</label><select class="cc-input" id="afStream"></select></div>
+          <div class="cc-field"><label>Category</label>
+            <select class="cc-input" id="afCategory">
+              <option value="core">Core / traditional</option>
+              <option value="government">Government / defence</option>
+              <option value="emerging">Emerging / tech-led</option>
+            </select>
+          </div>
+        </div>
+        <div class="cc-field"><label>One-line tagline</label><input class="cc-input" id="afTagline"></div>
+        <div class="cc-field"><label>Eligibility</label><input class="cc-input" id="afEligibility"></div>
+        <div class="cc-form-grid">
+          <div class="cc-field"><label>Entrance exams (comma separated)</label><input class="cc-input" id="afExams"></div>
+          <div class="cc-field"><label>Core skills (comma separated)</label><input class="cc-input" id="afSkills"></div>
+        </div>
+        <div class="cc-form-grid">
+          <div class="cc-field"><label>Courses (comma separated)</label><input class="cc-input" id="afCourses"></div>
+          <div class="cc-field"><label>Top colleges (comma separated)</label><input class="cc-input" id="afColleges"></div>
+        </div>
+        <div class="cc-form-grid">
+          <div class="cc-field"><label>Salary min (₹/yr)</label><input class="cc-input" id="afSalMin" type="number"></div>
+          <div class="cc-field"><label>Salary max (₹/yr)</label><input class="cc-input" id="afSalMax" type="number"></div>
+        </div>
+        <div class="cc-field"><label>Growth outlook</label>
+          <select class="cc-input" id="afGrowth">
+            <option>Steady</option><option>Moderate</option><option>High</option><option selected>Very High</option>
+          </select>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:10px;">
+          <button class="cc-btn cc-btn-marigold" id="btnSaveCareer">Add career</button>
+          <button class="cc-btn cc-btn-outline" id="btnCancelEdit" style="display:none;">Cancel edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="cc-footer">
+  <div class="cc-wrap cc-footer-inner">
+    <div class="cc-fine">Career Compass — a student career-guidance prototype. Salary figures are indicative ranges, not guarantees.</div>
+    <div class="cc-footer-links">
+      <a href="#" data-nav="resources">Resources</a>
+      <a href="#" data-nav="admin">Admin</a>
+      <a href="#" data-nav="home">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<div class="cc-toast" id="ccToast"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ================= DATA ================= */
+const STREAMS = {
+  'Engineering':             {code:'ENG', color:'#3D6EB0', bearing:0},
+  'Information Technology':  {code:'IT',  color:'#3D4FB0', bearing:30},
+  'Research':                {code:'RES', color:'#1E8FA0', bearing:60},
+  'Design':                  {code:'DES', color:'#B0478C', bearing:90},
+  'Arts':                    {code:'ART', color:'#7A4FA0', bearing:120},
+  'Management':               {code:'MGT', color:'#1F7A6C', bearing:150},
+  'Commerce':                {code:'COM', color:'#C77F1F', bearing:180},
+  'Entrepreneurship':        {code:'ENT', color:'#C2540F', bearing:210},
+  'Law':                     {code:'LAW', color:'#8B2E3F', bearing:240},
+  'Government Services':     {code:'GOV', color:'#6B7A2E', bearing:270},
+  'Defence':                 {code:'DEF', color:'#2E6B3F', bearing:300},
+  'Medical':                 {code:'MED', color:'#B5434F', bearing:330},
+};
+const INTERESTS = ['Solving problems','Building & fixing things','Numbers & money','Writing & storytelling','Helping people heal','Design & visuals','Debate & justice','Leading a team','Public service','Technology & code','Discovery & experiments','Starting my own thing'];
+const INTEREST_STREAM_MAP = {
+  'Solving problems':['Engineering','Research','Information Technology'],
+  'Building & fixing things':['Engineering'],
+  'Numbers & money':['Commerce','Management'],
+  'Writing & storytelling':['Arts'],
+  'Helping people heal':['Medical'],
+  'Design & visuals':['Design'],
+  'Debate & justice':['Law'],
+  'Leading a team':['Management','Entrepreneurship'],
+  'Public service':['Government Services','Defence'],
+  'Technology & code':['Information Technology'],
+  'Discovery & experiments':['Research'],
+  'Starting my own thing':['Entrepreneurship'],
+};
+
+function rm(stage,detail){return {stage:stage,detail:detail};}
+
+const CAREERS_SEED = [
+  {id:'cse-engineer', name:'Computer Science Engineer', stream:'Engineering', category:'core',
+    tagline:'Designs and builds the software systems that run everything from banking apps to satellites.',
+    eligibility:'12th with Physics, Chemistry, Maths (PCM), minimum 60% aggregate for most institutes.',
+    exams:['JEE Main','JEE Advanced','BITSAT','State CETs'], skills:['Problem solving','Data structures','Programming','Systems thinking','Team collaboration'],
+    courses:['B.Tech/B.E. in Computer Science','M.Tech (optional specialisation)'],
+    colleges:['IITs','NITs','BITS Pilani','IIITs','State engineering colleges'],
+    salaryMin:500000, salaryMax:2800000, growth:'Very High',
+    roadmap:[rm('Class 11–12','Take PCM with a strong maths foundation; start basic coding on the side.'),
+      rm('Entrance exam','Prepare for and appear in JEE Main/Advanced or a relevant state CET.'),
+      rm('Degree','Complete a 4-year B.Tech/B.E. in Computer Science or allied branch.'),
+      rm('Build proof of work','Contribute to projects, internships or open-source work during college.'),
+      rm('Enter the workforce','Join as a software engineer/developer; specialise or move into product/management over time.')]},
+
+  {id:'mechanical-engineer', name:'Mechanical Engineer', stream:'Engineering', category:'core',
+    tagline:'Designs, builds and maintains machines — from car engines to manufacturing plants.',
+    eligibility:'12th with PCM, minimum 60% aggregate for most institutes.',
+    exams:['JEE Main','JEE Advanced','State CETs','GATE (for postgrad)'], skills:['CAD design','Thermodynamics','Manufacturing processes','Problem solving'],
+    courses:['B.Tech/B.E. in Mechanical Engineering','M.Tech (specialisation)'],
+    colleges:['IITs','NITs','VJTI Mumbai','State engineering colleges'],
+    salaryMin:400000, salaryMax:1800000, growth:'Moderate',
+    roadmap:[rm('Class 11–12','Take PCM; build interest through robotics or automobile clubs.'),
+      rm('Entrance exam','Appear for JEE Main/Advanced or a state CET.'),
+      rm('Degree','Complete a 4-year B.Tech/B.E. in Mechanical Engineering.'),
+      rm('Specialise','Pick up CAD/CAM tools, or prepare for GATE for a master\'s or PSU jobs.'),
+      rm('Enter the workforce','Join manufacturing, automotive, energy or core-engineering firms; PSUs via GATE.')]},
+
+  {id:'civil-engineer', name:'Civil Engineer', stream:'Engineering', category:'core',
+    tagline:'Plans and builds the roads, bridges and buildings that shape a city.',
+    eligibility:'12th with PCM, minimum 60% aggregate for most institutes.',
+    exams:['JEE Main','State CETs','GATE (for postgrad/PSU jobs)'], skills:['Structural analysis','Site management','AutoCAD/BIM','Surveying'],
+    courses:['B.Tech/B.E. in Civil Engineering','M.Tech (structural/environmental)'],
+    colleges:['IITs','NITs','State engineering colleges'],
+    salaryMin:350000, salaryMax:1500000, growth:'Steady',
+    roadmap:[rm('Class 11–12','Take PCM with attention to maths and physics.'),
+      rm('Entrance exam','Appear for JEE Main or a state CET.'),
+      rm('Degree','Complete a 4-year B.Tech/B.E. in Civil Engineering.'),
+      rm('Site experience','Take up internships with construction or infrastructure firms.'),
+      rm('Enter the workforce','Join construction, infrastructure or government PWD/PSU roles; licensure for independent practice.')]},
+
+  {id:'software-developer', name:'Software Developer', stream:'Information Technology', category:'core',
+    tagline:'Writes and ships the applications people use every day, on web, mobile or backend systems.',
+    eligibility:'12th in any stream (Maths strongly preferred); B.Tech/BCA/B.Sc. Computer Science typical routes.',
+    exams:['JEE Main (for B.Tech)','University-specific BCA/B.Sc entrance tests'], skills:['Programming languages','Version control','Debugging','APIs & databases'],
+    courses:['B.Tech (CS/IT)','BCA','B.Sc. Computer Science'],
+    colleges:['IIITs','NITs','Christ University','Symbiosis','State universities'],
+    salaryMin:450000, salaryMax:3000000, growth:'Very High',
+    roadmap:[rm('Class 11–12','Any stream works, but maths helps; start learning to code informally.'),
+      rm('Degree/entrance','Join a B.Tech, BCA or B.Sc CS programme via the relevant entrance route.'),
+      rm('Build a portfolio','Ship small projects, contribute to open source, do internships.'),
+      rm('First role','Join as a junior/associate developer; pick a specialisation (web, mobile, backend).'),
+      rm('Grow','Move into senior engineering, architecture, or product roles with experience.')]},
+
+  {id:'data-scientist', name:'Data Scientist', stream:'Information Technology', category:'emerging',
+    tagline:'Turns raw data into decisions — building models that predict, recommend and optimise.',
+    eligibility:'Bachelor\'s in CS/Statistics/Maths/Engineering; strong quantitative aptitude from 12th (PCM ideal).',
+    exams:['JEE Main (UG route)','GATE (PG route)','Institute-specific data science entrance tests'], skills:['Statistics','Python/R','Machine learning','Data visualisation','SQL'],
+    courses:['B.Tech/B.Sc. in CS, Statistics or Data Science','M.Sc./PG diploma in Data Science'],
+    colleges:['IITs','ISI Kolkata','IIITs','Top private universities'],
+    salaryMin:600000, salaryMax:3500000, growth:'Very High',
+    roadmap:[rm('Class 11–12','Take PCM; build a strong footing in statistics and logical reasoning.'),
+      rm('Degree','Pursue a bachelor\'s in CS, statistics, maths or a related quantitative field.'),
+      rm('Specialise','Learn Python/R, ML fundamentals, and work on real datasets.'),
+      rm('Portfolio','Build projects/competitions (e.g. Kaggle) to show applied skill.'),
+      rm('Enter the workforce','Join as a junior data analyst/scientist; grow into ML engineering or research roles.')]},
+
+  {id:'aiml-engineer', name:'AI/ML Engineer', stream:'Information Technology', category:'emerging',
+    tagline:'Builds and deploys the machine-learning systems behind recommendations, vision and language tools.',
+    eligibility:'B.Tech/B.E. in CS/AI/allied field; strong maths (PCM) at 12th level.',
+    exams:['JEE Main','JEE Advanced','GATE (for postgrad)'], skills:['Machine learning','Deep learning frameworks','Python','Maths (linear algebra, probability)'],
+    courses:['B.Tech in AI/CS','M.Tech/M.S. in AI or Machine Learning'],
+    colleges:['IITs','IIITs','IISc Bangalore'],
+    salaryMin:700000, salaryMax:4000000, growth:'Very High',
+    roadmap:[rm('Class 11–12','Take PCM; build strong fundamentals in maths and logic.'),
+      rm('Entrance exam','Appear for JEE Main/Advanced for a B.Tech seat.'),
+      rm('Degree','Complete a B.Tech in CS or AI, with electives in ML/deep learning.'),
+      rm('Applied projects','Work on real ML projects, internships, or research assistantships.'),
+      rm('Enter the workforce','Join as an ML/AI engineer; specialise in vision, NLP or MLOps over time.')]},
+
+  {id:'cybersecurity-analyst', name:'Cybersecurity Analyst', stream:'Information Technology', category:'emerging',
+    tagline:'Defends networks, apps and data against attacks — a role in constant demand as threats grow.',
+    eligibility:'B.Tech/BCA/B.Sc. in CS or IT; 12th in any stream, PCM preferred.',
+    exams:['JEE Main (for B.Tech)','University-specific entrance tests'], skills:['Networking','Security protocols','Ethical hacking basics','Risk assessment'],
+    courses:['B.Tech/BCA in CS or IT','PG diploma/certifications in cybersecurity'],
+    colleges:['IIITs','NITs','Private cybersecurity-focused institutes'],
+    salaryMin:500000, salaryMax:2500000, growth:'Very High',
+    roadmap:[rm('Class 11–12','Any stream works; build interest through networking and basic coding.'),
+      rm('Degree','Pursue a B.Tech/BCA in CS or IT.'),
+      rm('Specialise','Take up certifications (e.g. CEH, Security+) alongside your degree.'),
+      rm('Hands-on practice','Participate in capture-the-flag contests and security internships.'),
+      rm('Enter the workforce','Join as a security analyst; grow into security architecture or consulting.')]},
+
+  {id:'research-scientist', name:'Research Scientist (CSIR/Academia)', stream:'Research', category:'core',
+    tagline:'Pursues original questions in science, from labs to fieldwork, and publishes what\'s found.',
+    eligibility:'12th with Science (PCM/PCB); Bachelor\'s and Master\'s in a core science subject, followed by NET/PhD.',
+    exams:['CSIR-NET','GATE','JEST','University PhD entrance tests'], skills:['Research methodology','Scientific writing','Lab techniques','Critical thinking','Patience for long-term work'],
+    courses:['B.Sc./B.Tech','M.Sc. in a specialised science','PhD'],
+    colleges:['IISc Bangalore','IITs','TIFR','Central universities'],
+    salaryMin:400000, salaryMax:1800000, growth:'Moderate',
+    roadmap:[rm('Class 11–12','Take Science stream with a subject you genuinely enjoy.'),
+      rm('Bachelor\'s degree','Complete a B.Sc./B.Tech in a core science or engineering subject.'),
+      rm('Master\'s + NET','Pursue an M.Sc. and clear CSIR-NET or an equivalent fellowship exam.'),
+      rm('PhD','Undertake a doctoral degree with a research fellowship (JRF/SRF).'),
+      rm('Enter the workforce','Join as a scientist at a research institute, CSIR lab, or move into academia.')]},
+
+  {id:'isro-scientist', name:'ISRO Scientist/Engineer', stream:'Research', category:'core',
+    tagline:'Designs and builds India\'s satellites, launch vehicles and space missions.',
+    eligibility:'B.E./B.Tech in relevant engineering discipline with high aggregate marks; cleared via ISRO Centralised Recruitment Board (ICRB) exam.',
+    exams:['ICRB exam','GATE (for some postgrad-entry roles)'], skills:['Aerospace/mechanical/electronics engineering','Precision & attention to detail','Team-based problem solving'],
+    courses:['B.Tech in Aerospace/Mechanical/Electronics/Computer Science'],
+    colleges:['IITs','IISc Bangalore','NITs','IIST Thiruvananthapuram'],
+    salaryMin:600000, salaryMax:1800000, growth:'High',
+    roadmap:[rm('Class 11–12','Take PCM with strong performance in physics and maths.'),
+      rm('Entrance exam','Appear for JEE Main/Advanced or the IIST entrance exam.'),
+      rm('Degree','Complete a B.Tech in an engineering discipline relevant to space systems.'),
+      rm('ICRB exam','Clear the ISRO Centralised Recruitment Board written exam and interview.'),
+      rm('Enter ISRO','Join as a scientist/engineer and work on live space missions.')]},
+
+  {id:'fashion-designer', name:'Fashion Designer', stream:'Design', category:'core',
+    tagline:'Turns ideas and fabric into wearable collections, from sketch to runway or retail.',
+    eligibility:'12th in any stream; admission via design aptitude entrance exams.',
+    exams:['NIFT Entrance Exam','NID DAT','UCEED'], skills:['Sketching','Fabric knowledge','Trend awareness','Pattern making','Creativity'],
+    courses:['B.Des in Fashion Design','Diploma in Fashion Design'],
+    colleges:['NIFT campuses','NID Ahmedabad','Pearl Academy'],
+    salaryMin:300000, salaryMax:1500000, growth:'Moderate',
+    roadmap:[rm('Class 11–12','Any stream; build a sketching/design portfolio on the side.'),
+      rm('Entrance exam','Appear for NIFT Entrance Exam or NID DAT.'),
+      rm('Degree','Complete a B.Des in Fashion Design (typically 4 years).'),
+      rm('Internship','Work with a designer label or manufacturing house during/after the course.'),
+      rm('Enter the workforce','Join a design house, start your own label, or move into merchandising/styling.')]},
+
+  {id:'uiux-designer', name:'UI/UX Designer', stream:'Design', category:'emerging',
+    tagline:'Shapes how apps and websites feel to use — from wireframes to polished interfaces.',
+    eligibility:'12th in any stream; B.Des or any bachelor\'s degree plus a design portfolio.',
+    exams:['UCEED','NID DAT','Portfolio-based admissions (many programmes)'], skills:['Wireframing','User research','Visual design','Prototyping tools','Empathy for users'],
+    courses:['B.Des in Interaction/Communication Design','Any bachelor\'s degree + UX certification/bootcamp'],
+    colleges:['IITs (design programmes)','NID','Srishti Manipal'],
+    salaryMin:400000, salaryMax:2200000, growth:'Very High',
+    roadmap:[rm('Class 11–12','Any stream; start exploring design tools and sketching.'),
+      rm('Entrance/degree','Appear for UCEED/NID DAT for a design degree, or pursue any bachelor\'s degree.'),
+      rm('Build skills','Learn design tools and user-research methods; build case studies.'),
+      rm('Portfolio','Assemble a portfolio of real or self-initiated design projects.'),
+      rm('Enter the workforce','Join as a junior UX/UI designer at a product company or agency.')]},
+
+  {id:'journalist', name:'Journalist & Mass Communication', stream:'Arts', category:'core',
+    tagline:'Reports, writes and shapes the stories that inform the public, across print, TV or digital.',
+    eligibility:'12th in any stream; admission via university entrance tests for mass communication programmes.',
+    exams:['IIMC Entrance Exam','Symbiosis SET','University-specific tests'], skills:['Writing','Research','Interviewing','Ethics & fact-checking','Public speaking'],
+    courses:['BA/BJMC in Journalism & Mass Communication','PG Diploma in Journalism'],
+    colleges:['IIMC','Symbiosis Institute of Media','Delhi University colleges'],
+    salaryMin:250000, salaryMax:1200000, growth:'Moderate',
+    roadmap:[rm('Class 11–12','Any stream; start writing regularly — blog, school paper, anything.'),
+      rm('Entrance exam','Appear for IIMC, Symbiosis SET or a similar mass-comm entrance test.'),
+      rm('Degree','Complete a BA/BJMC or equivalent programme in journalism.'),
+      rm('Internship','Intern with a newsroom, digital publication or production house.'),
+      rm('Enter the workforce','Join as a trainee reporter/writer; specialise in a beat over time.')]},
+
+  {id:'psychologist', name:'Psychologist', stream:'Arts', category:'core',
+    tagline:'Studies the mind and helps people work through it — in clinics, schools or organisations.',
+    eligibility:'12th in any stream (Psychology as a subject helps); bachelor\'s and master\'s in Psychology required for practice.',
+    exams:['University entrance tests (CUET for many central universities)'], skills:['Active listening','Empathy','Research methods','Assessment tools','Confidentiality & ethics'],
+    courses:['BA/B.Sc. in Psychology','M.A./M.Sc. in Clinical or Counselling Psychology'],
+    colleges:['Delhi University','Christ University','TISS Mumbai'],
+    salaryMin:300000, salaryMax:1400000, growth:'High',
+    roadmap:[rm('Class 11–12','Any stream; Psychology as a subject if available.'),
+      rm('Bachelor\'s degree','Complete a BA/B.Sc. in Psychology via CUET or institute-specific admission.'),
+      rm('Master\'s + specialisation','Pursue an M.A./M.Sc. in Clinical, Counselling or Organisational Psychology.'),
+      rm('Supervised practice','Complete supervised clinical hours/internship as required for licensure.'),
+      rm('Enter the workforce','Practice in clinics, schools, or corporate wellness; further M.Phil for clinical registration.')]},
+
+  {id:'business-manager', name:'Business Manager (MBA track)', stream:'Management', category:'core',
+    tagline:'Runs and grows teams, budgets and strategy across any industry you choose to enter.',
+    eligibility:'12th in any stream; bachelor\'s degree followed by an MBA/PGDM for most management roles.',
+    exams:['CAT','XAT','CUET (for UG management programmes)'], skills:['Leadership','Strategic thinking','Communication','Financial literacy','Decision-making'],
+    courses:['BBA','MBA/PGDM'],
+    colleges:['IIMs','XLRI Jamshedpur','FMS Delhi','NMIMS'],
+    salaryMin:500000, salaryMax:3000000, growth:'High',
+    roadmap:[rm('Class 11–12','Any stream; Commerce or Maths background helps.'),
+      rm('Bachelor\'s degree','Pursue a BBA or any bachelor\'s degree with strong academics.'),
+      rm('Work experience (optional)','Gain 1–3 years of work experience — valued by top MBA programmes.'),
+      rm('Entrance exam','Appear for CAT/XAT and secure an MBA/PGDM seat.'),
+      rm('Enter the workforce','Join as a management trainee; grow into functional or general management roles.')]},
+
+  {id:'hr-manager', name:'Human Resources Manager', stream:'Management', category:'core',
+    tagline:'Builds the systems that hire, develop and retain people inside an organisation.',
+    eligibility:'12th in any stream; bachelor\'s degree followed by an MBA/PG diploma in HR.',
+    exams:['CAT','XAT','CUET (for UG)'], skills:['Communication','Conflict resolution','Labour law basics','Organisational psychology'],
+    courses:['BBA','MBA/PGDM in Human Resources'],
+    colleges:['XLRI Jamshedpur','TISS Mumbai','IIMs'],
+    salaryMin:400000, salaryMax:2200000, growth:'Moderate',
+    roadmap:[rm('Class 11–12','Any stream; strong communication skills help.'),
+      rm('Bachelor\'s degree','Pursue a BBA or any bachelor\'s degree.'),
+      rm('Specialised PG','Pursue an MBA/PGDM with HR specialisation.'),
+      rm('Internship','Intern in a corporate HR function to understand hiring, payroll and policy.'),
+      rm('Enter the workforce','Join as an HR associate; grow into HR business partner or CHRO roles.')]},
+
+  {id:'chartered-accountant', name:'Chartered Accountant', stream:'Commerce', category:'core',
+    tagline:'Audits, advises and keeps the financial books of businesses honest and compliant.',
+    eligibility:'12th in any stream (Commerce with Maths preferred); registration with ICAI and clearing CA exams.',
+    exams:['CA Foundation','CA Intermediate','CA Final (all via ICAI)'], skills:['Accounting','Taxation','Auditing','Attention to detail','Ethics'],
+    courses:['CA Foundation → Intermediate → Articleship → Final (ICAI route)'],
+    colleges:['ICAI (regulatory body, not a college)','Commerce colleges for a parallel B.Com'],
+    salaryMin:600000, salaryMax:2500000, growth:'High',
+    roadmap:[rm('Class 11–12','Commerce with Maths is common, though any stream can register for CA Foundation.'),
+      rm('CA Foundation','Register with ICAI and clear the Foundation exam after 12th.'),
+      rm('CA Intermediate','Clear both groups of the Intermediate exam.'),
+      rm('Articleship','Complete a mandatory ~2-year practical training (articleship) under a practising CA.'),
+      rm('CA Final','Clear the Final exam and register as a Chartered Accountant with ICAI.')]},
+
+  {id:'investment-banker', name:'Investment Banker', stream:'Commerce', category:'core',
+    tagline:'Helps companies raise money, merge, and go public — high pressure, high reward finance work.',
+    eligibility:'12th in any stream (Commerce/Maths preferred); bachelor\'s in finance/economics/commerce, often followed by an MBA.',
+    exams:['CUET','CAT/XAT (for MBA route)'], skills:['Financial modelling','Valuation','Negotiation','Long working hours resilience'],
+    courses:['B.Com/BBA/Economics','MBA in Finance (preferred for top roles)'],
+    colleges:['SRCC Delhi','IIMs','NMIMS'],
+    salaryMin:700000, salaryMax:4000000, growth:'High',
+    roadmap:[rm('Class 11–12','Commerce/Maths gives an early edge, though not mandatory.'),
+      rm('Bachelor\'s degree','Pursue B.Com, BBA or Economics with strong academics.'),
+      rm('Internships','Intern with banks or financial firms during college.'),
+      rm('MBA (common route)','Pursue an MBA in Finance from a top B-school for entry into top banks.'),
+      rm('Enter the workforce','Join as an analyst; grow into associate, VP and beyond with experience.')]},
+
+  {id:'company-secretary', name:'Company Secretary', stream:'Commerce', category:'core',
+    tagline:'Keeps a company legally compliant — from board meetings to regulatory filings.',
+    eligibility:'12th in any stream; registration with ICSI and clearing CS exams.',
+    exams:['CSEET','CS Executive','CS Professional (all via ICSI)'], skills:['Corporate law','Compliance','Documentation','Attention to detail'],
+    courses:['CSEET → Executive → Professional (ICSI route)'],
+    colleges:['ICSI (regulatory body)','Commerce colleges for a parallel degree'],
+    salaryMin:400000, salaryMax:1800000, growth:'Moderate',
+    roadmap:[rm('Class 11–12','Any stream; Commerce helps with the foundational concepts.'),
+      rm('CSEET','Register with ICSI and clear the CS Executive Entrance Test.'),
+      rm('CS Executive','Clear both modules of the Executive programme.'),
+      rm('CS Professional','Clear the Professional programme and complete practical training.'),
+      rm('Enter the workforce','Register as a Company Secretary and join a corporate compliance team.')]},
+
+  {id:'startup-founder', name:'Startup Founder', stream:'Entrepreneurship', category:'core',
+    tagline:'Builds a business from an idea — raising money, hiring, and finding customers along the way.',
+    eligibility:'No fixed qualification; a bachelor\'s degree in any field, plus domain knowledge, is common preparation.',
+    exams:['None mandatory — incubator/accelerator selection processes vary'], skills:['Risk tolerance','Sales & persuasion','Resourcefulness','Financial basics','Resilience'],
+    courses:['Any bachelor\'s degree','Entrepreneurship-focused programmes/incubator cohorts (optional)'],
+    colleges:['IIT/IIM incubation cells','Any college — the venture matters more than the degree'],
+    salaryMin:0, salaryMax:10000000, growth:'Very High',
+    roadmap:[rm('Class 11–12','Any stream; use school years to build small projects or side-hustles.'),
+      rm('Learn a domain','Pursue a bachelor\'s degree while going deep in a field you want to build in.'),
+      rm('Validate an idea','Talk to potential customers and test a small version of the idea.'),
+      rm('Build & raise','Build a working product; approach incubators, angel investors or bootstrap.'),
+      rm('Grow the venture','Scale the team and business, or pivot based on what the market tells you.')]},
+
+  {id:'advocate', name:'Advocate (Lawyer)', stream:'Law', category:'core',
+    tagline:'Represents clients and argues cases — in court, in contracts, or in corporate boardrooms.',
+    eligibility:'12th in any stream; 5-year integrated law degree (after 12th) or 3-year LLB (after graduation).',
+    exams:['CLAT','AILET','LSAT India'], skills:['Legal reasoning','Research','Argumentation','Written drafting','Reading comprehension'],
+    courses:['BA LLB / BBA LLB (5-year integrated)','LLB (3-year, after graduation)'],
+    colleges:['National Law Universities (NLUs)','Faculty of Law, Delhi University','Symbiosis Law School'],
+    salaryMin:350000, salaryMax:2500000, growth:'Moderate',
+    roadmap:[rm('Class 11–12','Any stream; strong reading and reasoning skills matter most.'),
+      rm('Entrance exam','Appear for CLAT/AILET for a 5-year integrated law degree.'),
+      rm('Law degree','Complete a BA LLB or equivalent 5-year integrated programme.'),
+      rm('Internships','Intern with law firms, chambers or NGOs through the degree.'),
+      rm('Enter practice','Enrol with the Bar Council, then practice independently, join a firm, or a corporate legal team.')]},
+
+  {id:'ias-officer', name:'IAS Officer (Civil Services)', stream:'Government Services', category:'government',
+    tagline:'Administers districts, policy and public services as part of India\'s top civil service.',
+    eligibility:'Any bachelor\'s degree in any stream; age and attempt limits apply as per UPSC rules.',
+    exams:['UPSC Civil Services Examination (Prelims, Mains, Interview)'], skills:['General awareness','Analytical writing','Public administration aptitude','Discipline for long-term prep'],
+    courses:['Any bachelor\'s degree (subject doesn\'t matter for eligibility)'],
+    colleges:['Any recognised university','LBSNAA Mussoorie (post-selection training)'],
+    salaryMin:600000, salaryMax:2500000, growth:'Steady',
+    roadmap:[rm('Class 11–12','Any stream; build wide general knowledge and reading habits early.'),
+      rm('Bachelor\'s degree','Complete a bachelor\'s degree in any subject.'),
+      rm('UPSC preparation','Prepare systematically for Prelims and Mains over 1–2 years.'),
+      rm('Clear the exam','Clear Prelims, Mains and the Personality Test (interview).'),
+      rm('Training & posting','Undergo foundational training at LBSNAA before district/ministry postings.')]},
+
+  {id:'bank-po', name:'Bank PO (Probationary Officer)', stream:'Government Services', category:'government',
+    tagline:'Manages branch operations, lending and customer service as an officer in a public-sector bank.',
+    eligibility:'Any bachelor\'s degree in any stream; age limits as per IBPS/SBI norms.',
+    exams:['IBPS PO','SBI PO'], skills:['Quantitative aptitude','Reasoning','English comprehension','Banking awareness'],
+    courses:['Any bachelor\'s degree'],
+    colleges:['Any recognised university'],
+    salaryMin:450000, salaryMax:1200000, growth:'Steady',
+    roadmap:[rm('Class 11–12','Any stream; Commerce/Maths gives an edge in the aptitude sections.'),
+      rm('Bachelor\'s degree','Complete a bachelor\'s degree in any subject.'),
+      rm('Exam preparation','Prepare for quantitative, reasoning and English sections of IBPS/SBI PO.'),
+      rm('Clear the exam','Clear Prelims, Mains and the interview/group exercise.'),
+      rm('Join & grow','Join as a Probationary Officer; grow into branch and senior management roles.')]},
+
+  {id:'army-officer', name:'Indian Army Officer', stream:'Defence', category:'government',
+    tagline:'Leads soldiers and operations — a career built on discipline, service and command.',
+    eligibility:'12th (Science/Maths for technical entries) via NDA; graduates via CDS; age limits apply.',
+    exams:['NDA (after 12th)','CDS (after graduation)'], skills:['Physical fitness','Leadership','Discipline','Quick decision-making','Team command'],
+    courses:['National Defence Academy (after NDA exam)','Indian Military Academy (after CDS, for graduates)'],
+    colleges:['National Defence Academy, Khadakwasla','Indian Military Academy, Dehradun'],
+    salaryMin:560000, salaryMax:1800000, growth:'Steady',
+    roadmap:[rm('Class 11–12','Science with Maths for technical entries; maintain strong physical fitness.'),
+      rm('NDA exam','Appear for the NDA written exam followed by SSB interview.'),
+      rm('Academy training','Train at the National Defence Academy, then respective service academy.'),
+      rm('Commissioning','Get commissioned as an officer after successful training.'),
+      rm('Serve & grow','Serve across postings; rise through ranks with tenure and performance.')]},
+
+  {id:'doctor-mbbs', name:'Doctor (MBBS)', stream:'Medical', category:'core',
+    tagline:'Diagnoses and treats patients — one of the most respected and demanding career paths.',
+    eligibility:'12th with Physics, Chemistry, Biology (PCB), minimum 50% aggregate (varies by category).',
+    exams:['NEET-UG'], skills:['Scientific reasoning','Empathy','Stamina for long study & duty hours','Attention to detail'],
+    courses:['MBBS (5.5 years including internship)','MD/MS (postgraduate specialisation)'],
+    colleges:['AIIMS','Government medical colleges','CMC Vellore'],
+    salaryMin:600000, salaryMax:2500000, growth:'High',
+    roadmap:[rm('Class 11–12','Take PCB with a strong focus on Biology and Chemistry.'),
+      rm('NEET-UG','Prepare for and clear the NEET-UG entrance exam.'),
+      rm('MBBS','Complete the 5.5-year MBBS programme including a mandatory internship.'),
+      rm('Licensing','Register with the National/State Medical Commission to practice.'),
+      rm('Specialise (optional)','Pursue MD/MS via NEET-PG for a chosen specialisation.')]},
+
+  {id:'nurse', name:'Nurse', stream:'Medical', category:'core',
+    tagline:'Provides hands-on patient care and is often the backbone of any hospital or clinic.',
+    eligibility:'12th with PCB (some institutes accept PCM too), minimum 45–50% aggregate.',
+    exams:['NEET-UG (for some B.Sc Nursing seats)','Institute-specific entrance tests'], skills:['Patient care','Attention to detail','Communication','Composure under pressure'],
+    courses:['B.Sc. Nursing (4 years)','GNM Diploma (3 years)'],
+    colleges:['AIIMS College of Nursing','Christian Medical College Vellore','State nursing colleges'],
+    salaryMin:250000, salaryMax:900000, growth:'High',
+    roadmap:[rm('Class 11–12','Take PCB or an equivalent science combination.'),
+      rm('Entrance exam','Appear for NEET-UG or institute-specific nursing entrance tests.'),
+      rm('Degree/diploma','Complete a B.Sc. Nursing or GNM diploma programme.'),
+      rm('Registration','Register with the State Nursing Council to practice.'),
+      rm('Enter the workforce','Join a hospital or clinic; specialise (ICU, paediatric, etc.) with experience.')]},
+];
+
+/* ================= STATE ================= */
+const state = {
+  view:'home',
+  careers: CAREERS_SEED.map(c=>Object.assign({},c)),
+  user:null,
+  users:[],
+  favorites:{},
+  compareIds:[null,null,null],
+  filters:{streams:[], category:'all', query:'', sort:'name'},
+  exploreTab:'careers',
+  profile:{qualification:'10th', stream:'any', interests:[]},
+  editingCareerId:null,
+};
+
+/* ================= HELPERS ================= */
+function byId(id){return document.getElementById(id);}
+function streamColor(s){return (STREAMS[s]&&STREAMS[s].color) || '#16233F';}
+function fmtINR(n){
+  if(n>=10000000) return '₹'+(n/10000000).toFixed(1)+' Cr';
+  if(n>=100000) return '₹'+(n/100000).toFixed(1)+' L';
+  return '₹'+n.toLocaleString('en-IN');
+}
+function toast(msg){
+  const t=byId('ccToast'); t.textContent=msg; t.classList.add('is-visible');
+  clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove('is-visible'), 2400);
+}
+function careerById(id){return state.careers.find(c=>c.id===id);}
+function currentFavList(){
+  if(!state.user) return [];
+  return state.favorites[state.user.email] || [];
+}
+function isFav(id){return currentFavList().includes(id);}
+function toggleFav(id){
+  if(!state.user){ toast('Log in to save favourites'); navigate('auth'); return; }
+  const list = state.favorites[state.user.email] || (state.favorites[state.user.email]=[]);
+  const idx = list.indexOf(id);
+  if(idx>-1){ list.splice(idx,1); toast('Removed from favourites'); }
+  else { list.push(id); toast('Saved to favourites'); }
+  renderCurrentView();
+}
+
+/* ================= COMPASS ================= */
+function buildCompass(){
+  const ticksG = byId('compassTicks'), labelsG = byId('compassLabels');
+  let ticks='', labels='';
+  Object.keys(STREAMS).forEach(name=>{
+    const s = STREAMS[name];
+    const rad = (s.bearing-90) * Math.PI/180;
+    const x1 = 200 + 168*Math.cos(rad), y1 = 200 + 168*Math.sin(rad);
+    const x2 = 200 + 182*Math.cos(rad), y2 = 200 + 182*Math.sin(rad);
+    ticks += `<line class="cc-compass-tick" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`;
+    const lx = 200 + 148*Math.cos(rad), ly = 200 + 148*Math.sin(rad);
+    labels += `<text class="cc-compass-label" x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" fill="${s.color}">${s.code}</text>`;
+  });
+  ticksG.innerHTML = ticks; labelsG.innerHTML = labels;
+}
+function pointCompass(streamName){
+  const needle = byId('compassNeedle'), tag = byId('compassTag');
+  if(!streamName){ needle.style.transform='rotate(0deg)'; tag.textContent='choose a stream below'; return; }
+  const s = STREAMS[streamName];
+  needle.style.transform = `rotate(${s.bearing}deg)`;
+  tag.textContent = streamName;
+}
+
+/* ================= NAV / ROUTER ================= */
+function navigate(view, params){
+  state.view = view;
+  if(params) Object.assign(state, params);
+  window.scrollTo({top:0,behavior:'instant' in window ? 'instant':'auto'});
+  renderCurrentView();
+}
+function renderCurrentView(){
+  document.querySelectorAll('.cc-view').forEach(v=>v.classList.remove('is-active'));
+  byId('view-'+state.view).classList.add('is-active');
+  document.querySelectorAll('.cc-nav-link').forEach(l=>{
+    l.classList.toggle('is-current', l.getAttribute('data-nav')===state.view);
+  });
+  renderAuthArea();
+  switch(state.view){
+    case 'home': renderHome(); break;
+    case 'profile': renderProfile(); break;
+    case 'recommendations': renderRecommendations(); break;
+    case 'explore': renderExplore(); break;
+    case 'detail': renderDetail(); break;
+    case 'compare': renderCompare(); break;
+    case 'govt': renderGovtEmerging(); break;
+    case 'resources': renderResources(); break;
+    case 'auth': break;
+    case 'favorites': renderFavorites(); break;
+    case 'admin': renderAdmin(); break;
+  }
+}
+
+/* ================= CARD RENDERER ================= */
+function careerCardHTML(c){
+  const badge = c.category==='emerging' ? '<span class="cc-badge cc-badge-emerging">Emerging</span>'
+    : c.category==='government' ? '<span class="cc-badge cc-badge-government">Govt / Defence</span>'
+    : '<span class="cc-badge">Core</span>';
+  const fav = isFav(c.id);
+  return `
+  <div class="cc-card" style="--stream-color:${streamColor(c.stream)}">
+    <div class="cc-card-top">
+      <div>
+        <div class="cc-card-stream">${STREAMS[c.stream].code} · ${c.stream}</div>
+        <h4>${c.name}</h4>
+      </div>
+      <button class="cc-fav-btn ${fav?'is-fav':''}" data-action="fav" data-id="${c.id}" aria-label="Save to favourites" title="Save to favourites">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 21s-7-4.6-9.5-9.1C.8 8.4 2.4 5 6 5c2 0 3.3 1 4 2.3C10.7 6 12 5 14 5c3.6 0 5.2 3.4 3.5 6.9C19 16.4 12 21 12 21z"/></svg>
+      </button>
+    </div>
+    ${badge}
+    <p class="cc-tagline">${c.tagline}</p>
+    <div class="cc-meta-row">
+      <span>Salary <b>${fmtINR(c.salaryMin)}–${fmtINR(c.salaryMax)}</b></span>
+      <span>Growth <b>${c.growth}</b></span>
+    </div>
+    <div class="cc-card-actions">
+      <button class="cc-btn cc-btn-outline cc-btn-small" data-action="view" data-id="${c.id}" style="flex:1;">View route →</button>
+    </div>
+  </div>`;
+}
+
+/* ================= HOME ================= */
+function renderHome(){
+  const row = byId('streamChipRow');
+  row.innerHTML = Object.keys(STREAMS).map(name=>{
+    const s = STREAMS[name];
+    return `<a href="#" class="cc-chip" data-action="stream-chip" data-stream="${name}" style="border-color:${s.color}55;">
+      <span class="cc-line-badge" style="background:${s.color}">${s.code}</span>${name}
+    </a>`;
+  }).join('');
+
+  const featuredIds = ['cse-engineer','data-scientist','doctor-mbbs','ias-officer','uiux-designer','startup-founder'];
+  byId('homeFeaturedGrid').innerHTML = featuredIds.map(id=>careerCardHTML(careerById(id))).join('');
+  byId('statCareers').textContent = state.careers.length;
+}
+
+/* ================= PROFILE FORM ================= */
+function renderProfile(){
+  const row = byId('interestToggleRow');
+  row.innerHTML = INTERESTS.map(i=>{
+    const sel = state.profile.interests.includes(i);
+    return `<button type="button" class="cc-tag-toggle ${sel?'is-selected':''}" data-action="toggle-interest" data-interest="${i}">${i}</button>`;
+  }).join('');
+  byId('fQualification').value = state.profile.qualification;
+  byId('fStream').value = state.profile.stream;
+}
+
+function computeRecommendations(){
+  const wantedStreams = new Set();
+  state.profile.interests.forEach(i=>{
+    (INTEREST_STREAM_MAP[i]||[]).forEach(s=>wantedStreams.add(s));
+  });
+  const streamFromBoard = {
+    'Science-PCM':['Engineering','Information Technology','Research','Defence'],
+    'Science-PCB':['Medical','Research'],
+    'Commerce':['Commerce','Management','Entrepreneurship'],
+    'Arts':['Arts','Law','Design'],
+    'any':[]
+  }[state.profile.stream] || [];
+  streamFromBoard.forEach(s=>wantedStreams.add(s));
+
+  const scored = state.careers.map(c=>{
+    let score = 0;
+    if(wantedStreams.has(c.stream)) score += 2;
+    state.profile.interests.forEach(i=>{
+      if((INTEREST_STREAM_MAP[i]||[]).includes(c.stream)) score += 1;
+    });
+    return {c, score};
+  });
+  scored.sort((a,b)=>b.score-a.score);
+  let top = scored.filter(x=>x.score>0).slice(0,9).map(x=>x.c);
+  if(top.length===0) top = state.careers.slice(0,9);
+  return top;
+}
+
+function renderRecommendations(){
+  const list = computeRecommendations();
+  byId('recHeading').textContent = state.profile.interests.length
+    ? 'Careers that match your bearing'
+    : 'A general starting shortlist';
+  byId('recGrid').innerHTML = list.map(careerCardHTML).join('');
+}
+
+/* ================= EXPLORE ================= */
+function renderFilterStreamList(){
+  const box = byId('filterStreamList');
+  box.innerHTML = Object.keys(STREAMS).map(name=>{
+    const checked = state.filters.streams.includes(name) ? 'checked' : '';
+    return `<label class="cc-filter-option"><input type="checkbox" data-filter-stream="${name}" ${checked}> ${name}</label>`;
+  }).join('');
+}
+function filteredCareers(){
+  let list = state.careers.slice();
+  const f = state.filters;
+  if(f.streams.length) list = list.filter(c=>f.streams.includes(c.stream));
+  if(f.category!=='all') list = list.filter(c=>c.category===f.category);
+  if(f.query.trim()){
+    const q = f.query.trim().toLowerCase();
+    list = list.filter(c=> c.name.toLowerCase().includes(q) || c.stream.toLowerCase().includes(q) || c.tagline.toLowerCase().includes(q));
+  }
+  switch(f.sort){
+    case 'salaryHigh': list.sort((a,b)=>b.salaryMax-a.salaryMax); break;
+    case 'salaryLow': list.sort((a,b)=>a.salaryMin-b.salaryMin); break;
+    case 'growth': {
+      const rank = {'Very High':4,'High':3,'Moderate':2,'Steady':1};
+      list.sort((a,b)=>rank[b.growth]-rank[a.growth]); break;
+    }
+    default: list.sort((a,b)=>a.name.localeCompare(b.name));
+  }
+  return list;
+}
+function renderExplore(){
+  renderFilterStreamList();
+  byId('exploreSearch').value = state.filters.query;
+  byId('exploreSort').value = state.filters.sort;
+  document.querySelectorAll('input[name=fcat]').forEach(r=>{ r.checked = r.value===state.filters.category; });
+
+  const list = filteredCareers();
+  byId('exploreCount').textContent = `${list.length} career${list.length===1?'':'s'} found`;
+  byId('exploreGrid').innerHTML = list.length ? list.map(careerCardHTML).join('')
+    : `<div class="cc-empty"><h4>No careers match those filters</h4><p>Try clearing a filter or searching a broader term.</p></div>`;
+
+  // Exams tab
+  const examMap = {};
+  state.careers.forEach(c=>c.exams.forEach(e=>{
+    (examMap[e] = examMap[e] || []).push(c.name);
+  }));
+  byId('examTableBody').innerHTML = Object.keys(examMap).sort().map(e=>
+    `<tr><td class="mono">${e}</td><td>${examMap[e].join(', ')}</td></tr>`
+  ).join('');
+
+  // Colleges tab
+  const collegeMap = {};
+  state.careers.forEach(c=>c.colleges.forEach(col=>{
+    (collegeMap[col] = collegeMap[col] || []).push(c.name);
+  }));
+  byId('collegeTableBody').innerHTML = Object.keys(collegeMap).sort().map(col=>
+    `<tr><td>${col}</td><td>${collegeMap[col].join(', ')}</td></tr>`
+  ).join('');
+
+  showExploreTab(state.exploreTab);
+}
+function showExploreTab(tab){
+  state.exploreTab = tab;
+  document.querySelectorAll('.cc-tab').forEach(t=>t.classList.toggle('is-active', t.getAttribute('data-etab')===tab));
+  ['careers','exams','colleges'].forEach(t=>{ byId('etab-'+t).style.display = (t===tab)?'block':'none'; });
+}
+
+/* ================= DETAIL ================= */
+function renderDetail(){
+  const c = careerById(state.currentCareerId);
+  if(!c){ byId('detailContent').innerHTML = `<div class="cc-empty"><h4>Career not found</h4><p>It may have been removed from the admin panel.</p></div>`; return; }
+  pointCompass(c.stream);
+  const fav = isFav(c.id);
+  byId('detailContent').innerHTML = `
+    <div class="cc-detail-head">
+      <div class="cc-detail-title">
+        <span class="cc-badge" style="background:${streamColor(c.stream)}22;color:${streamColor(c.stream)};border-color:${streamColor(c.stream)}55;">${STREAMS[c.stream].code} · ${c.stream}</span>
+        <h2 style="margin-top:10px;">${c.name}</h2>
+        <p style="max-width:60ch;">${c.tagline}</p>
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button class="cc-btn-icon ${fav?'is-active':''}" data-action="fav" data-id="${c.id}" title="Save to favourites">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="${fav?'#fff':'none'}" stroke="${fav?'#fff':'currentColor'}" stroke-width="2"><path d="M12 21s-7-4.6-9.5-9.1C.8 8.4 2.4 5 6 5c2 0 3.3 1 4 2.3C10.7 6 12 5 14 5c3.6 0 5.2 3.4 3.5 6.9C19 16.4 12 21 12 21z"/></svg>
+        </button>
+        <button class="cc-btn cc-btn-outline cc-btn-small" data-action="add-compare" data-id="${c.id}">Add to compare</button>
+      </div>
+    </div>
+
+    <div class="cc-stat-grid">
+      <div class="cc-stat-box"><span>Salary range</span><b>${fmtINR(c.salaryMin)} – ${fmtINR(c.salaryMax)}</b></div>
+      <div class="cc-stat-box"><span>Growth outlook</span><b>${c.growth}</b></div>
+      <div class="cc-stat-box"><span>Category</span><b style="text-transform:capitalize;">${c.category}</b></div>
+      <div class="cc-stat-box"><span>Eligibility</span><b style="font-size:0.86rem;font-family:var(--font-body);font-weight:600;">${c.eligibility}</b></div>
+    </div>
+
+    <div class="cc-detail-cols">
+      <div>
+        <div class="cc-detail-block" style="margin-bottom:26px;">
+          <h4 style="border-color:${streamColor(c.stream)}55;">Entrance exams</h4>
+          <ul class="cc-pill-list">${c.exams.map(e=>`<li>${e}</li>`).join('')}</ul>
+        </div>
+        <div class="cc-detail-block" style="margin-bottom:26px;">
+          <h4 style="border-color:${streamColor(c.stream)}55;">Skills you'll build</h4>
+          <ul class="cc-pill-list">${c.skills.map(s=>`<li>${s}</li>`).join('')}</ul>
+        </div>
+        <div class="cc-detail-block">
+          <h4 style="border-color:${streamColor(c.stream)}55;">Courses</h4>
+          <ul class="cc-list-plain" style="--stream-color:${streamColor(c.stream)}">${c.courses.map(s=>`<li>${s}</li>`).join('')}</ul>
+        </div>
+      </div>
+      <div>
+        <div class="cc-detail-block" style="margin-bottom:26px;">
+          <h4 style="border-color:${streamColor(c.stream)}55;">Top colleges / institutes</h4>
+          <ul class="cc-list-plain" style="--stream-color:${streamColor(c.stream)}">${c.colleges.map(s=>`<li>${s}</li>`).join('')}</ul>
+        </div>
+        <div class="cc-detail-block">
+          <h4 style="border-color:${streamColor(c.stream)}55;">Route: education to employment</h4>
+          <div class="cc-route">
+            ${c.roadmap.map((r,i)=>`
+              <div class="cc-route-stop">
+                <div class="cc-route-dot" style="--stream-color:${streamColor(c.stream)};background:${streamColor(c.stream)}">${i+1}</div>
+                <div class="cc-route-copy">
+                  <div class="cc-route-stage">Stage ${i+1} of ${c.roadmap.length}</div>
+                  <h5>${r.stage}</h5>
+                  <p>${r.detail}</p>
+                </div>
+              </div>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+/* ================= COMPARE ================= */
+function renderCompare(){
+  byId('comparePicker').innerHTML = state.compareIds.map((id,i)=>{
+    const c = id ? careerById(id) : null;
+    if(c){
+      return `<div class="cc-compare-slot is-filled" style="border-color:${streamColor(c.stream)}">
+        <span><b>${c.name}</b></span>
+        <button class="cc-btn-icon" data-action="compare-remove" data-slot="${i}" title="Remove" style="width:28px;height:28px;">✕</button>
+      </div>`;
+    }
+    return `<div class="cc-compare-slot">
+      <select class="cc-input" data-action="compare-select" data-slot="${i}">
+        <option value="">Slot ${i+1} — pick a career</option>
+        ${state.careers.map(c=>`<option value="${c.id}">${c.name}</option>`).join('')}
+      </select>
+    </div>`;
+  }).join('');
+
+  const chosen = state.compareIds.filter(Boolean).map(careerById);
+  if(chosen.length < 2){
+    byId('compareTableWrap').innerHTML = `<div class="cc-empty"><h4>Pick at least two careers</h4><p>Choose from the slots above to see a side-by-side comparison.</p></div>`;
+    return;
+  }
+  const rows = [
+    ['Stream', c=>`${STREAMS[c.stream].code} · ${c.stream}`],
+    ['Category', c=>c.category],
+    ['Eligibility', c=>c.eligibility],
+    ['Entrance exams', c=>c.exams.join(', ')],
+    ['Salary range', c=>fmtINR(c.salaryMin)+' – '+fmtINR(c.salaryMax)],
+    ['Growth outlook', c=>c.growth],
+    ['Courses', c=>c.courses.join(', ')],
+    ['Top colleges', c=>c.colleges.join(', ')],
+  ];
+  byId('compareTableWrap').innerHTML = `
+  <table class="cc-table">
+    <thead><tr><th></th>${chosen.map(c=>`<th style="color:${streamColor(c.stream)}">${c.name}</th>`).join('')}</tr></thead>
+    <tbody>
+      ${rows.map(([label,fn])=>`<tr><td><b>${label}</b></td>${chosen.map(c=>`<td>${fn(c)}</td>`).join('')}</tr>`).join('')}
+    </tbody>
+  </table>`;
+}
+
+/* ================= GOVT & EMERGING ================= */
+function renderGovtEmerging(){
+  byId('govtGrid').innerHTML = state.careers.filter(c=>c.category==='government').map(careerCardHTML).join('');
+  byId('emergingGrid').innerHTML = state.careers.filter(c=>c.category==='emerging').map(careerCardHTML).join('');
+}
+
+/* ================= RESOURCES ================= */
+const FAQS = [
+  ['Do I have to decide my entire career right after 10th?', 'No. After 10th you mainly choose a broad stream — Science, Commerce or Arts. Most specific career decisions happen after 12th, and even then, many paths allow you to pivot later.'],
+  ['Can a Commerce or Arts student switch into a tech career later?', 'Yes. Fields like UI/UX design, digital marketing, product management and even software development (via BCA or bootcamps) are open to students from any 12th stream.'],
+  ['Is a low board percentage the end of good options?', 'No. Some entrance exams and colleges weigh the entrance score far more than board marks. Focus on the entrance exam relevant to your target field.'],
+  ['How many entrance exams should I prepare for?', 'Most students focus on 1–2 exams relevant to their target stream rather than spreading thin across many unrelated ones.'],
+  ['Are government jobs still worth pursuing given the competition?', 'They remain a strong option for stability and public-service impact — the competition is real, but so is the long-term security and pension structure most government roles offer.'],
+];
+function renderResources(){
+  byId('faqList').innerHTML = FAQS.map(([q,a])=>`
+    <details class="cc-faq"><summary>${q}</summary><p>${a}</p></details>
+  `).join('');
+}
+
+/* ================= AUTH ================= */
+function renderAuthArea(){
+  const area = byId('ccAuthArea');
+  if(state.user){
+    area.innerHTML = `
+      <span style="font-size:0.82rem;font-weight:700;color:var(--slate);">Hi, ${state.user.name.split(' ')[0]}</span>
+      <button class="cc-btn cc-btn-ghost cc-btn-small" id="btnLogout">Log out</button>
+    `;
+    byId('btnLogout').onclick = ()=>{ state.user=null; toast('Logged out'); navigate('home'); };
+  } else {
+    area.innerHTML = `<a href="#" class="cc-btn cc-btn-outline cc-btn-small" data-nav="auth">Log in</a>`;
+  }
+  // re-bind data-nav links added dynamically
+  area.querySelectorAll('[data-nav]').forEach(el=>el.addEventListener('click', navClickHandler));
+}
+function switchAuthTab(which){
+  byId('authTabLogin').classList.toggle('is-active', which==='login');
+  byId('authTabRegister').classList.toggle('is-active', which==='register');
+  byId('authFormLogin').style.display = which==='login' ? 'block':'none';
+  byId('authFormRegister').style.display = which==='register' ? 'block':'none';
+}
+
+/* ================= FAVORITES ================= */
+function renderFavorites(){
+  const area = byId('favoritesArea');
+  if(!state.user){
+    area.innerHTML = `<div class="cc-empty"><h4>Log in to see your favourites</h4><p>Favourites are saved per account for this session.</p><div style="margin-top:16px;"><a href="#" class="cc-btn cc-btn-marigold" data-nav="auth">Log in / Register</a></div></div>`;
+    area.querySelectorAll('[data-nav]').forEach(el=>el.addEventListener('click', navClickHandler));
+    return;
+  }
+  const ids = currentFavList();
+  if(!ids.length){
+    area.innerHTML = `<div class="cc-empty"><h4>No favourites yet</h4><p>Tap the heart icon on any career card to save it here.</p></div>`;
+    return;
+  }
+  area.innerHTML = `<div class="cc-card-grid">${ids.map(id=>careerCardHTML(careerById(id))).join('')}</div>`;
+}
+
+/* ================= ADMIN ================= */
+function populateAdminStreamSelect(){
+  byId('afStream').innerHTML = Object.keys(STREAMS).map(s=>`<option value="${s}">${s}</option>`).join('');
+}
+function renderAdmin(){
+  byId('adminCount').textContent = state.careers.length;
+  byId('adminList').innerHTML = state.careers.map(c=>`
+    <div class="cc-admin-row">
+      <div>
+        <div class="cc-admin-row-name">${c.name}</div>
+        <div class="cc-admin-row-meta">${c.stream} · ${c.category}</div>
+      </div>
+      <div style="display:flex;gap:6px;">
+        <button class="cc-btn cc-btn-outline cc-btn-small" data-action="admin-edit" data-id="${c.id}">Edit</button>
+        <button class="cc-btn cc-btn-outline cc-btn-small" data-action="admin-delete" data-id="${c.id}">Delete</button>
+      </div>
+    </div>
+  `).join('');
+  if(!state.editingCareerId) resetAdminForm();
+}
+function resetAdminForm(){
+  state.editingCareerId = null;
+  byId('adminFormTitle').textContent = 'Add a new career';
+  byId('btnSaveCareer').textContent = 'Add career';
+  byId('btnCancelEdit').style.display = 'none';
+  ['afName','afTagline','afEligibility','afExams','afSkills','afCourses','afColleges','afSalMin','afSalMax'].forEach(id=>byId(id).value='');
+  byId('afStream').value='Engineering'; byId('afCategory').value='core'; byId('afGrowth').value='Very High';
+}
+function loadCareerIntoForm(c){
+  state.editingCareerId = c.id;
+  byId('adminFormTitle').textContent = 'Edit career';
+  byId('btnSaveCareer').textContent = 'Save changes';
+  byId('btnCancelEdit').style.display = 'inline-flex';
+  byId('afName').value=c.name; byId('afStream').value=c.stream; byId('afCategory').value=c.category;
+  byId('afTagline').value=c.tagline; byId('afEligibility').value=c.eligibility;
+  byId('afExams').value=c.exams.join(', '); byId('afSkills').value=c.skills.join(', ');
+  byId('afCourses').value=c.courses.join(', '); byId('afColleges').value=c.colleges.join(', ');
+  byId('afSalMin').value=c.salaryMin; byId('afSalMax').value=c.salaryMax; byId('afGrowth').value=c.growth;
+}
+function splitList(str){ return str.split(',').map(s=>s.trim()).filter(Boolean); }
+function saveCareerFromForm(){
+  const name = byId('afName').value.trim();
+  if(!name){ toast('Give the career a name first'); return; }
+  const data = {
+    name, stream: byId('afStream').value, category: byId('afCategory').value,
+    tagline: byId('afTagline').value.trim() || 'No description yet.',
+    eligibility: byId('afEligibility').value.trim() || 'Not specified.',
+    exams: splitList(byId('afExams').value), skills: splitList(byId('afSkills').value),
+    courses: splitList(byId('afCourses').value), colleges: splitList(byId('afColleges').value),
+    salaryMin: Number(byId('afSalMin').value)||0, salaryMax: Number(byId('afSalMax').value)||0,
+    growth: byId('afGrowth').value,
+    roadmap: [rm('Class 11–12','Choose the relevant stream and begin foundational preparation.'),
+      rm('Higher education','Pursue the qualifying degree or diploma for this field.'),
+      rm('Build skills','Gain hands-on experience through internships or projects.'),
+      rm('Enter the workforce','Take up an entry-level role and grow from there.')],
+  };
+  if(state.editingCareerId){
+    const idx = state.careers.findIndex(c=>c.id===state.editingCareerId);
+    data.id = state.editingCareerId;
+    data.roadmap = state.careers[idx].roadmap;
+    state.careers[idx] = data;
+    toast('Career updated');
+  } else {
+    data.id = 'custom-'+Date.now();
+    state.careers.push(data);
+    toast('Career added');
+  }
+  resetAdminForm();
+  renderAdmin();
+}
+
+/* ================= EVENT WIRING ================= */
+function navClickHandler(e){
+  const target = e.currentTarget.getAttribute('data-nav');
+  if(!target) return;
+  e.preventDefault();
+  navigate(target);
+}
+document.querySelectorAll('[data-nav]').forEach(el=>el.addEventListener('click', navClickHandler));
+
+document.addEventListener('click', function(e){
+  const t = e.target.closest('[data-action]');
+  if(!t) return;
+  const action = t.getAttribute('data-action');
+
+  if(action==='view'){ e.preventDefault(); navigate('detail', {currentCareerId: t.getAttribute('data-id')}); }
+  if(action==='fav'){ e.preventDefault(); toggleFav(t.getAttribute('data-id')); }
+  if(action==='stream-chip'){
+    e.preventDefault();
+    const stream = t.getAttribute('data-stream');
+    pointCompass(stream);
+    state.filters.streams = [stream]; state.filters.category='all'; state.filters.query='';
+    navigate('explore');
+  }
+  if(action==='toggle-interest'){
+    const i = t.getAttribute('data-interest');
+    const idx = state.profile.interests.indexOf(i);
+    if(idx>-1) state.profile.interests.splice(idx,1); else state.profile.interests.push(i);
+    renderProfile();
+  }
+  if(action==='add-compare'){
+    const id = t.getAttribute('data-id');
+    const emptySlot = state.compareIds.indexOf(null);
+    if(state.compareIds.includes(id)){ toast('Already added to compare'); }
+    else if(emptySlot===-1){ toast('Compare slots are full — remove one first'); }
+    else { state.compareIds[emptySlot]=id; toast('Added to compare'); navigate('compare'); }
+  }
+  if(action==='compare-remove'){
+    const slot = Number(t.getAttribute('data-slot'));
+    state.compareIds[slot]=null; renderCompare();
+  }
+  if(action==='admin-edit'){ loadCareerIntoForm(careerById(t.getAttribute('data-id'))); window.scrollTo({top:0}); }
+  if(action==='admin-delete'){
+    const id = t.getAttribute('data-id');
+    state.careers = state.careers.filter(c=>c.id!==id);
+    Object.keys(state.favorites).forEach(k=>{ state.favorites[k]=state.favorites[k].filter(f=>f!==id); });
+    state.compareIds = state.compareIds.map(x=>x===id?null:x);
+    toast('Career removed');
+    renderAdmin();
+  }
+});
+
+document.addEventListener('change', function(e){
+  if(e.target.matches('[data-filter-stream]')){
+    const s = e.target.getAttribute('data-filter-stream');
+    const idx = state.filters.streams.indexOf(s);
+    if(e.target.checked && idx===-1) state.filters.streams.push(s);
+    if(!e.target.checked && idx>-1) state.filters.streams.splice(idx,1);
+    renderExplore();
+  }
+  if(e.target.name==='fcat'){ state.filters.category = e.target.value; renderExplore(); }
+  if(e.target.id==='exploreSort'){ state.filters.sort = e.target.value; renderExplore(); }
+  if(e.target.id==='fQualification'){ state.profile.qualification = e.target.value; }
+  if(e.target.id==='fStream'){ state.profile.stream = e.target.value; }
+  if(e.target.matches('[data-action="compare-select"]')){
+    const slot = Number(e.target.getAttribute('data-slot'));
+    state.compareIds[slot] = e.target.value || null;
+    renderCompare();
+  }
+});
+
+document.addEventListener('input', function(e){
+  if(e.target.id==='exploreSearch'){ state.filters.query = e.target.value; renderExplore(); }
+});
+
+byId('btnGetRecs').addEventListener('click', ()=>navigate('recommendations'));
+byId('btnClearFilters').addEventListener('click', ()=>{
+  state.filters = {streams:[], category:'all', query:'', sort:'name'};
+  renderExplore();
+});
+document.querySelectorAll('.cc-tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>showExploreTab(tab.getAttribute('data-etab')));
+});
+
+byId('authTabLogin').addEventListener('click', ()=>switchAuthTab('login'));
+byId('authTabRegister').addEventListener('click', ()=>switchAuthTab('register'));
+document.querySelectorAll('[data-authswitch]').forEach(a=>a.addEventListener('click', (e)=>{
+  e.preventDefault(); switchAuthTab(a.getAttribute('data-authswitch'));
+}));
+byId('btnDoLogin').addEventListener('click', ()=>{
+  const email = byId('loginEmail').value.trim().toLowerCase();
+  const pass = byId('loginPassword').value;
+  const found = state.users.find(u=>u.email===email && u.password===pass);
+  if(!found){ toast('No matching account — check details or register'); return; }
+  state.user = found; toast('Welcome back, '+found.name.split(' ')[0]); navigate('home');
+});
+byId('btnDoRegister').addEventListener('click', ()=>{
+  const name = byId('regName').value.trim();
+  const email = byId('regEmail').value.trim().toLowerCase();
+  const pass = byId('regPassword').value;
+  if(!name || !email || !pass){ toast('Fill in all fields to register'); return; }
+  if(state.users.some(u=>u.email===email)){ toast('An account with this email already exists'); return; }
+  const user = {name,email,password:pass};
+  state.users.push(user); state.favorites[email]=[];
+  state.user = user; toast('Account created — welcome, '+name.split(' ')[0]); navigate('home');
+});
+
+byId('btnSaveCareer').addEventListener('click', saveCareerFromForm);
+byId('btnCancelEdit').addEventListener('click', resetAdminForm);
+
+/* ================= INIT ================= */
+buildCompass();
+populateAdminStreamSelect();
+navigate('home');
+
+})();
+</script>
+</body>
+</html>
